@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bugsnag: React Example</title>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/bugsnag-js/dist/bugsnag.js"></script>
+    <script src="node_modules/bugsnag-react/dist/bugsnag-react.js"></script>
+    <script>
+      window.bugsnagClient = bugsnag({
+        apiKey: '19094d99b21f3a2a6f47910f9531fc83',
+        endpoint: '//localhost:8000'
+      }, [ bugsnag__react ])
+    </script>
+  </head>
+  <style>
+    body {
+      font-family: 'Menlo', monospace; line-height: 1.7;
+      color: #444; background-color: #fafafa;
+      max-width: 600px; margin: 0 auto; padding: 20px;
+    }
+  </style>
+  <body>
+    <h1>Bugsnag: React plugin example</h1>
+    <div id="root"></div>
+    <script type="text/babel" src="app.js"></script>
+  </body>
+</html>

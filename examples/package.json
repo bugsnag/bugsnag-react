@@ -1,0 +1,21 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-standalone": "^6.26.0",
+    "bugsnag-js": "file:../../bugsnag-js",
+    "bugsnag-react": "file:..",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "serve": "^6.4.1"
+  },
+  "devDependencies": {}
+}

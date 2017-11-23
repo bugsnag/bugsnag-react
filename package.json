@@ -1,0 +1,40 @@
+{
+  "name": "bugsnag-react",
+  "version": "0.0.0",
+  "description": "React integration for bugsnag-js",
+  "main": "dist/bugsnag-react.js",
+  "browser": "dist/bugsnag-react.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify src/index.js --standalone bugsnag__react -g babelify > dist/bugsnag-react.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bugsnag/bugsnag-react.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bugsnag/bugsnag-react/issues"
+  },
+  "homepage": "https://github.com/bugsnag/bugsnag-react#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.26.0",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-es2015-computed-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
+    "bugsnag-js": "file:../bugsnag-js",
+    "standard": "^10.0.3"
+  }
+}
