@@ -5,7 +5,7 @@
   "main": "dist/bugsnag-react.js",
   "browser": "dist/bugsnag-react.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tape src/test/**",
     "build": "browserify src/index.js --standalone bugsnag__react -g babelify > dist/bugsnag-react.js"
   },
   "repository": {
@@ -35,6 +35,7 @@
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "bugsnag-js": "file:../bugsnag-js",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
   }
 }
