@@ -9,13 +9,18 @@ A module for integrating [bugsnag-js](https://github.com/bugsnag/bugsnag-js) wit
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.1/umd/react-dom.production.min.js"></script>
-<script src="//d2wy8f7a9ursnm.cloudfront.net/4.x.x/bugsnag.min.js"></script>
-<script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-plugin-react/1.x.x/bugsnag-react.min.js"></script>
-<script>window.bugsnagClient = bugsnag('API_KEY', [ bugsnag__react ])</script>
+<script src="//d2wy8f7a9ursnm.cloudfront.net/v4/bugsnag.min.js"></script>
+<script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-plugin-react/v1/bugsnag-react.min.js"></script>
 <script>
-  const ErrorBoundary = bugsnag__react.createErrorBoundary()
+  window.bugsnagClient = bugsnag('API_KEY')
+</script>
+<script>
+  // in your react app…
+  var ErrorBoundary = bugsnag__react(React, bugsnagClient)
   ReactDOM.render(
-    <ErrorBoundary />,
+    <ErrorBoundary>
+      <YourApp />
+    </ErrorBoundary>,
     document.getElementById('app')
   )
 </script>
@@ -24,17 +29,20 @@ A module for integrating [bugsnag-js](https://github.com/bugsnag/bugsnag-js) wit
 ### Bundled
 
 ```js
-const ReactDOM = require('react-dom')
-const React = require('react')
-const bugsnag = require('bugsnag-js')
-const bsr = require('bugsnag-react').createPlugin()
+import ReactDOM from 'react-dom'
+import React from 'react'
+import bugsnag from 'bugsnag-js'
+import bugsnagReact from 'bugsnag-react'
 
-bugsnag('API_KEY', [ bsr ])
+const bugsnagClient = bugsnag('API_KEY')
+const bsr = bugsnagReact(React, bugsnagClient)
 
-const ErrorBoundary = bsr.createErrorBoundary(React)
+const ErrorBoundary = bsr.createErrorBoundary()
 
 ReactDOM.render(
-  <ErrorBoundary />,
+  <ErrorBoundary>
+    <YourApp />
+  </ErrorBoundary>,
   document.getElementById('app')
 )
 ```

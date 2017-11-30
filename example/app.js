@@ -27,7 +27,7 @@ class BadButton extends React.Component {
   }
 }
 
-const ErrorBoundary = bugsnag__react.createErrorBoundary()
+const ErrorBoundary = bugsnagClient.use(bugsnag__react())
 ReactDOM.render(
   <ErrorBoundary>
     <BadButton />

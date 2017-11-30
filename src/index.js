@@ -1,16 +1,11 @@
-const createPlugin = module.exports.createPlugin = (React) => {
-  React = React || window.React
-  let client = null
-  let BugsnagReport = null
+module.exports = (React = window.React) => {
+  if (!React) throw new Error('cannot find React')
+
   return {
-    init: (c, R) => {
-      if (!React) return client._logger.warn('react plugin did not receive a reference to React')
-      client = c
-      BugsnagReport = R
-    },
-    createErrorBoundary: () => {
+    init: (client) => {
       class ErrorBoundary extends React.Component {
         componentDidCatch (error, info) {
+          const BugsnagReport = client.BugsnagReport
           const handledState = { severity: 'error', unhandled: true, handledState: { type: 'unhandledException' } }
           const report = new BugsnagReport(error.name, error.message, BugsnagReport.getStacktrace(error), handledState)
           if (info && info.componentStack) info.componentStack = formatComponentStack(info.componentStack)
@@ -35,5 +30,4 @@ const formatComponentStack = str => {
   return ret
 }
 
-module.exports = createPlugin(window.React)
 module.exports.formatComponentStack = formatComponentStack
