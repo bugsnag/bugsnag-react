@@ -6,7 +6,7 @@ module.exports = (React = window.React) => {
       class ErrorBoundary extends React.Component {
         componentDidCatch (error, info) {
           const BugsnagReport = client.BugsnagReport
-          const handledState = { severity: 'error', unhandled: true, handledState: { type: 'unhandledException' } }
+          const handledState = { severity: 'error', unhandled: true, severityReason: { type: 'unhandledException' } }
           const report = new BugsnagReport(error.name, error.message, BugsnagReport.getStacktrace(error), handledState)
           if (info && info.componentStack) info.componentStack = formatComponentStack(info.componentStack)
           report.updateMetaData('react', info)
