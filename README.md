@@ -49,6 +49,8 @@ The script tag creates a global function called `bugsnag__react` which needs to 
 </script>
 ```
 
+See the [example](example) for more info.
+
 ### Bundled
 
 ```js
