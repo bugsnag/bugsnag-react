@@ -1,6 +1,6 @@
 {
   "name": "bugsnag-react",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "React integration for bugsnag-js",
   "main": "dist/bugsnag-react.js",
   "browser": "dist/bugsnag-react.js",
