@@ -13,7 +13,7 @@ You can opt to install the package from npm, using the instructions below. Alter
 ### CDN
 
 ```html
-<script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-plugins/v4/bugsnag.min.js"></script>
+<script src="//d2wy8f7a9ursnm.cloudfront.net/v4/bugsnag.min.js"></script>
 <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-plugins/v1/bugsnag-react.min.js"></script>
 ```
 
