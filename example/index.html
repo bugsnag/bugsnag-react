@@ -5,11 +5,8 @@
     <script src="node_modules/babel-standalone/babel.js"></script>
     <script src="node_modules/react/umd/react.development.js"></script>
     <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
-    <script src="node_modules/bugsnag-js/dist/bugsnag.js"></script>
-    <script src="node_modules/bugsnag-react/dist/bugsnag-react.js"></script>
-    <script>
-      window.bugsnagClient = bugsnag('API_KEY')
-    </script>
+    <script src="//d2wy8f7a9ursnm.cloudfront.net/v4/bugsnag.min.js"></script>
+    <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-plugins/v1/bugsnag-react.min.js"></script>
   </head>
   <style>
     body {
@@ -19,7 +16,11 @@
     }
   </style>
   <body>
-    <h1>Bugsnag: React plugin example</h1>
+    <h1>Bugsnag: React Example</h1>
+    <p>
+      This page is a basic example of how to include bugsnag-react on a page via a
+      <code>&lt;script&gt;</code> tag.
+    </p>
     <div id="root"></div>
     <script type="text/babel" src="app.js"></script>
   </body>

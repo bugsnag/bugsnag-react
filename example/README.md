@@ -22,10 +22,10 @@ are left, how errors are grouped and how they relate to the original source.
 To get set up, follow the instructions below. Don't forget to replace the placeholder
 API token with your own!
 
-1. Clone the repo and `cd` this this directory:
+1. Clone the repo and `cd` into this directory:
     ```sh
     git clone git@github.com:bugsnag/bugsnag-react.git
-    cd bugsnag-react
+    cd bugsnag-react/example/
     ```
 1. Install the dependencies (with either npm or yarn):
     ```sh
@@ -34,7 +34,7 @@ API token with your own!
     ```sh
     yarn
     ```
-1. Replace the `API_KEY` placeholder in [index.html](index.html) with your actual API key.
+1. Replace the `API_KEY` placeholder in [app.js](app.js) with your actual API key.
 1. Start a web server:
     ```sh
     npm start
