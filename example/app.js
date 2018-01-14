@@ -9,7 +9,7 @@
 // Initialize Bugsnag to begin tracking errors. Only an api key is required, but here are some other helpful configuration details:
 const bugsnagClient = bugsnag({
     // get your own api key at bugsnag.com
-    apiKey: 'aaa5f6d3250177a3ea6d5dd52c8d5b07',
+    apiKey: '363658de4c5abbb27df673397aae3fdb',
 
     // if you track deploys or use source maps, make sure to set the correct version.
     appVersion: '1.2.3',
@@ -45,6 +45,7 @@ const bugsnagClient = bugsnag({
       name: "Hogwarts School of Witchcraft and Wizardry"
       }
     },
+    // N.B. our notifer automatically creates a metadata tab called "React" and populates it with component info.
 
     // because this is a demo app, below extends the default of 10 notifications per pageload. click away!
     maxEvents: 50
@@ -60,17 +61,17 @@ class BadButton extends React.Component {
     try {
       // potentially buggy code goes here
       //for this example, we're just throwing an error explcitly, but you do not need this syntax in your try clause.
-      throw new Error('Bad Thing!')
+      throw new Error('Bad Thing!');
     } catch (e) {
-      console.log("a handled error was sent to our dashboard.")
+      console.log("a handled error was sent to our dashboard.");
       bugsnagClient.notify(e, {
         context: 'Don\'t worry - I handled it.'
-      });
+      })
     }
   }
   triggerRenderError = () => {
     this.setState({ doARenderError: true })
-  }
+  };
   render() {
     return (
       <div>
@@ -90,6 +91,7 @@ class BadButton extends React.Component {
 }
 
 const ErrorBoundary = bugsnagClient.use(bugsnag__react())
+
 ReactDOM.render(
   <ErrorBoundary>
     <BadButton />
