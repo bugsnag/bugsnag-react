@@ -9,10 +9,13 @@
 // Initialize Bugsnag to begin tracking errors. Only an api key is required, but here are some other helpful configuration details:
 const bugsnagClient = bugsnag({
     // get your own api key at bugsnag.com
-    apiKey: '363658de4c5abbb27df673397aae3fdb',
+    apiKey: 'API_KEY',
 
     // if you track deploys or use source maps, make sure to set the correct version.
     appVersion: '1.2.3',
+
+    // Bugsnag can track the number of “sessions” that happen in your application, and calculate a crash rate for each release. This defaults to false.
+    autoCaptureSessions: true,
 
     // Bugsnag can track the number of “sessions” that happen in your application, and calculate a crash rate for each release. This defaults to false.
     autoCaptureSessions: true,
@@ -25,10 +28,8 @@ const bugsnagClient = bugsnag({
 
     // one of the most powerful tools in our library, beforeSend lets you evaluate, modify, add and remove data before sending the error to bugsnag. The actions here will be applied to *all* errors, handled and unhandled.
     beforeSend: function (report) {
-
-      // the below downgrades handled exceptions sent with the generic "Error" class to info. In this example, it only affects the notification called at the very end of this app.js.
-      if (report.errorClass === "Error" && report.severity === "warning") {
-        report.severity = "info"
+      if (report.errorClass === 'Error' && report.severity === 'warning')  {
+        report.updateMetaData('example', {thing: "one"})
       }
       // note that if you return false from the beforeSend, this will cancel the entire error report.
     },
