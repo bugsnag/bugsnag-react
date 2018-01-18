@@ -17,9 +17,6 @@ const bugsnagClient = bugsnag({
     // Bugsnag can track the number of “sessions” that happen in your application, and calculate a crash rate for each release. This defaults to false.
     autoCaptureSessions: true,
 
-    // Bugsnag can track the number of “sessions” that happen in your application, and calculate a crash rate for each release. This defaults to false.
-    autoCaptureSessions: true,
-
     // defines the release stage for all events that occur in this app.
     releaseStage: 'development',
 
