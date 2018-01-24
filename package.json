@@ -9,7 +9,7 @@
     "prepare": "npm run build",
     "postversion": "git push && git push --tags && npm publish --tag $(./bin/dist-tag-value)",
     "postpublish": "./bin/cdn-upload",
-    "test": "tape src/test/**",
+    "test": "standard && tape src/test/**",
     "build": "npm run build:dist && npm run build:dist:min",
     "build:dist": "browserify src/index.js --standalone bugsnag__react -g babelify > dist/bugsnag-react.js",
     "build:dist:min": "browserify -d src/index.js --standalone bugsnag__react -g babelify | uglifyjs --compress --mangle --source-map \"content=inline,url=bugsnag-react.min.js.map\" --output dist/bugsnag-react.min.js"
