@@ -31,3 +31,4 @@ const formatComponentStack = str => {
 }
 
 module.exports.formatComponentStack = formatComponentStack
+module.exports['default'] = module.exports
