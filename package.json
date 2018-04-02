@@ -22,6 +22,11 @@
     "url": "https://github.com/bugsnag/bugsnag-react/issues"
   },
   "homepage": "https://github.com/bugsnag/bugsnag-react#readme",
+  "standard": {
+    "ignore": [
+      "dist"
+    ]
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
