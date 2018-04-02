@@ -1,13 +1,13 @@
+/* global test, expect */
+
 global.window = {}
 
-const test = require('tape')
 const p = require('../')
 
-test('formatComponentStack(str)', t => {
+test('formatComponentStack(str)', () => {
   const str = `
   in BadButton
   in ErrorBoundary`
-  const expect = `in BadButton\nin ErrorBoundary`
-  t.equal(p.formatComponentStack(str), expect)
-  t.end()
+  expect(p.formatComponentStack(str))
+    .toBe(`in BadButton\nin ErrorBoundary`)
 })
