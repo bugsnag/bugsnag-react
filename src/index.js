@@ -4,6 +4,12 @@ module.exports = (React = window.React) => {
   return {
     init: (client) => {
       class ErrorBoundary extends React.Component {
+        constructor (props) {
+          super(props)
+          this.state = {
+            error: null
+          }
+        }
         componentDidCatch (error, info) {
           const BugsnagReport = client.BugsnagReport
           const handledState = { severity: 'error', unhandled: true, severityReason: { type: 'unhandledException' } }
@@ -11,8 +17,12 @@ module.exports = (React = window.React) => {
           if (info && info.componentStack) info.componentStack = formatComponentStack(info.componentStack)
           report.updateMetaData('react', info)
           client.notify(report)
+          this.setState({error: error})
         }
         render () {
+          if (this.state.error) {
+            return null
+          }
           return this.props.children
         }
       }
