@@ -29,16 +29,20 @@ test('formatComponentStack(str)', () => {
     .toBe(`in BadButton\nin ErrorBoundary`)
 })
 
-it('renders correctly', () => {
-  const tree = renderer
-    .create(<ErrorBoundary><p>test</p></ErrorBoundary>)
-    .toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
 const BadComponent = () => {
   throw Error('BadComponent')
 }
+
+const GoodComponent = () => ('test')
+
+const FallbackComponent = jest.fn(() => 'fallback')
+
+it('renders correctly', () => {
+  const tree = renderer
+    .create(<ErrorBoundary><GoodComponent /></ErrorBoundary>)
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
 
 it('renders correctly on error', () => {
   const tree = renderer
@@ -52,4 +56,18 @@ it('calls notify on error', () => {
     .create(<ErrorBoundary><BadComponent /></ErrorBoundary>)
     .toJSON()
   expect(bugsnag.notify).toHaveBeenCalledTimes(1)
+})
+
+it('does not render FallbackComponent when no error', () => {
+  const tree = renderer
+    .create(<ErrorBoundary FallbackComponent={FallbackComponent}><GoodComponent /></ErrorBoundary>)
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+it('renders FallbackComponent on error', () => {
+  const tree = renderer
+    .create(<ErrorBoundary FallbackComponent={FallbackComponent}><BadComponent /></ErrorBoundary>)
+    .toJSON()
+  expect(tree).toMatchSnapshot()
 })
