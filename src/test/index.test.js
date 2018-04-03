@@ -83,3 +83,11 @@ it('passes the props to the FallbackComponent', () => {
     expect.anything()
   )
 })
+
+it('it passes the beforeSend function to the Bugsnag notify call', () => {
+  const beforeSend = () => {}
+  renderer
+    .create(<ErrorBoundary beforeSend={(beforeSend)}><BadComponent /></ErrorBoundary>)
+    .toJSON()
+  expect(bugsnag.notify).toBeCalledWith(expect.anything(), expect.objectContaining({ beforeSend: beforeSend }))
+})
