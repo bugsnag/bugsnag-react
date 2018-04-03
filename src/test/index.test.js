@@ -71,3 +71,15 @@ it('renders FallbackComponent on error', () => {
     .toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+it('passes the props to the FallbackComponent', () => {
+  renderer
+    .create(<ErrorBoundary FallbackComponent={FallbackComponent}><BadComponent /></ErrorBoundary>)
+  expect(FallbackComponent).toBeCalledWith(
+    expect.objectContaining({
+      error: expect.anything(),
+      info: expect.anything()
+    }),
+    expect.anything()
+  )
+})

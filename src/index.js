@@ -7,7 +7,8 @@ module.exports = (React = window.React) => {
         constructor (props) {
           super(props)
           this.state = {
-            error: null
+            error: null,
+            info: null
           }
         }
         componentDidCatch (error, info) {
@@ -17,16 +18,14 @@ module.exports = (React = window.React) => {
           if (info && info.componentStack) info.componentStack = formatComponentStack(info.componentStack)
           report.updateMetaData('react', info)
           client.notify(report)
-          this.setState({
-            error: error
-          })
+          this.setState({error, info})
         }
         render () {
           const {error} = this.state
           if (error) {
             const {FallbackComponent} = this.props
             if (FallbackComponent) {
-              return React.createElement(FallbackComponent, null)
+              return React.createElement(FallbackComponent, this.state)
             }
             return null
           }
