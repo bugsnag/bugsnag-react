@@ -18,7 +18,7 @@ module.exports = (React = window.React) => {
           const report = new BugsnagReport(error.name, error.message, BugsnagReport.getStacktrace(error), handledState)
           if (info && info.componentStack) info.componentStack = formatComponentStack(info.componentStack)
           report.updateMetaData('react', info)
-          client.notify(report, { beforeSend: beforeSend })
+          client.notify(report, { beforeSend })
           this.setState({ error, info })
         }
         render () {
