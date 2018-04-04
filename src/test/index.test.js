@@ -33,9 +33,7 @@ const BadComponent = () => {
   throw Error('BadComponent')
 }
 
-const GoodComponent = () => ('test')
-
-const FallbackComponent = jest.fn(() => 'fallback')
+const GoodComponent = () => 'test'
 
 it('renders correctly', () => {
   const tree = renderer
@@ -59,13 +57,16 @@ it('calls notify on error', () => {
 })
 
 it('does not render FallbackComponent when no error', () => {
+  const FallbackComponent = jest.fn(() => 'fallback')
   const tree = renderer
     .create(<ErrorBoundary FallbackComponent={FallbackComponent}><GoodComponent /></ErrorBoundary>)
     .toJSON()
   expect(tree).toMatchSnapshot()
+  expect(FallbackComponent).toHaveBeenCalledTimes(0)
 })
 
 it('renders FallbackComponent on error', () => {
+  const FallbackComponent = jest.fn(() => 'fallback')
   const tree = renderer
     .create(<ErrorBoundary FallbackComponent={FallbackComponent}><BadComponent /></ErrorBoundary>)
     .toJSON()
@@ -73,13 +74,11 @@ it('renders FallbackComponent on error', () => {
 })
 
 it('passes the props to the FallbackComponent', () => {
+  const FallbackComponent = jest.fn(() => 'fallback')
   renderer
     .create(<ErrorBoundary FallbackComponent={FallbackComponent}><BadComponent /></ErrorBoundary>)
-  expect(FallbackComponent).toBeCalledWith(
-    expect.objectContaining({
-      error: expect.anything(),
-      info: expect.anything()
-    }),
-    expect.anything()
-  )
+  expect(FallbackComponent).toBeCalledWith({
+    error: expect.any(Error),
+    info: { componentStack: expect.any(String) }
+  }, {})
 })
