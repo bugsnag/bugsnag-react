@@ -95,8 +95,14 @@ class BadButton extends React.Component {
 
 const ErrorBoundary = bugsnagClient.use(bugsnag__react())
 
+// You can provide a FallbackComponent to the ErrorBoundary which will be rendered if an error is encountered
+// It will be passed the `error` and `info` from the `componentDidCatch` method as props
+const FallbackComponent = ({error, info}) => (
+  <div>An error has occurred</div>
+)
+
 ReactDOM.render(
-  <ErrorBoundary>
+  <ErrorBoundary FallbackComponent={FallbackComponent}>
     <BadButton />
   </ErrorBoundary>,
   document.getElementById('root')
