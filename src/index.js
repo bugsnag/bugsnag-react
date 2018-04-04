@@ -18,15 +18,13 @@ module.exports = (React = window.React) => {
           if (info && info.componentStack) info.componentStack = formatComponentStack(info.componentStack)
           report.updateMetaData('react', info)
           client.notify(report)
-          this.setState({error, info})
+          this.setState({ error, info })
         }
         render () {
-          const {error} = this.state
+          const { error } = this.state
           if (error) {
-            const {FallbackComponent} = this.props
-            if (FallbackComponent) {
-              return React.createElement(FallbackComponent, this.state)
-            }
+            const { FallbackComponent } = this.props
+            if (FallbackComponent) return React.createElement(FallbackComponent, this.state)
             return null
           }
           return this.props.children
