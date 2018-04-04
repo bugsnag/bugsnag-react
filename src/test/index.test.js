@@ -4,12 +4,14 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import index from '../'
 
+class BugsnagReport {
+  updateMetaData () {
+    return this
+  }
+}
+
 const bugsnag = {
-  BugsnagReport: jest.fn(() => {
-    return {
-      updateMetaData: jest.fn()
-    }
-  }),
+  BugsnagReport,
   notify: jest.fn()
 }
 
@@ -81,4 +83,15 @@ it('passes the props to the FallbackComponent', () => {
     error: expect.any(Error),
     info: { componentStack: expect.any(String) }
   }, {})
+})
+
+it('it passes the beforeSend function to the Bugsnag notify call', () => {
+  const beforeSend = () => {}
+  renderer
+    .create(<ErrorBoundary beforeSend={beforeSend}><BadComponent /></ErrorBoundary>)
+    .toJSON()
+  expect(bugsnag.notify).toBeCalledWith(
+    expect.any(BugsnagReport),
+    expect.objectContaining({ beforeSend: beforeSend })
+  )
 })
