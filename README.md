@@ -6,7 +6,7 @@
 
 [![NPM](https://nodei.co/npm/bugsnag-react.png?compact=true)](https://npmjs.org/package/bugsnag-react)
 
-A [bugsnag-js](https://github.com/bugsnag/bugsnag-js) plugin for [React](https://reactjs.org/).
+A [bugsnag-js](https://github.com/bugsnag/bugsnag-js) plugin for [React](https://reactjs.org/). Learn more about [error reporting for React applications](https://www.bugsnag.com/platforms/react-error-reporting/) with Bugsnag.
 
 This package enables you to integrate Bugsnag's error reporting with React's [error boundaries](https://blog.bugsnag.com/react-16-error-handling/). It creates and configures an `<ErrorBoundary/>` component which will capture and report unhandled errors in your component tree. You either use the `<ErrorBoundary/>` directly, or extend it to provide some fallback UI for your users.
 
