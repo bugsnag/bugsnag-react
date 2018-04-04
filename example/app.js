@@ -102,7 +102,7 @@ const beforeSend = (report) => {
 
 // You can provide a FallbackComponent to the ErrorBoundary which will be rendered if an error is encountered
 // It will be passed the `error` and `info` from the `componentDidCatch` method as props
-const FallbackComponent = ({_error, info}) => (
+const FallbackComponent = (/* { error, info } */) => (
   <div>An error has occurred</div>
 )
 

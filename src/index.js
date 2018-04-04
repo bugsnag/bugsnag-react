@@ -12,22 +12,20 @@ module.exports = (React = window.React) => {
           }
         }
         componentDidCatch (error, info) {
-          const {beforeSend} = this.props
+          const { beforeSend } = this.props
           const BugsnagReport = client.BugsnagReport
           const handledState = { severity: 'error', unhandled: true, severityReason: { type: 'unhandledException' } }
           const report = new BugsnagReport(error.name, error.message, BugsnagReport.getStacktrace(error), handledState)
           if (info && info.componentStack) info.componentStack = formatComponentStack(info.componentStack)
           report.updateMetaData('react', info)
-          client.notify(report, {beforeSend: beforeSend})
-          this.setState({error, info})
+          client.notify(report, { beforeSend: beforeSend })
+          this.setState({ error, info })
         }
         render () {
-          const {error} = this.state
+          const { error } = this.state
           if (error) {
-            const {FallbackComponent} = this.props
-            if (FallbackComponent) {
-              return React.createElement(FallbackComponent, this.state)
-            }
+            const { FallbackComponent } = this.props
+            if (FallbackComponent) return React.createElement(FallbackComponent, this.state)
             return null
           }
           return this.props.children
