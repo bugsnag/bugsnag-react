@@ -95,6 +95,11 @@ class BadButton extends React.Component {
 
 const ErrorBoundary = bugsnagClient.use(bugsnag__react())
 
+// You can provide a `beforeSend` function to the ErrorBoundary which will be passed to the Bugsnag.notify call
+const beforeSend = (report) => {
+  report.severity = 'info'
+}
+
 // You can provide a FallbackComponent to the ErrorBoundary which will be rendered if an error is encountered
 // It will be passed the `error` and `info` from the `componentDidCatch` method as props
 const FallbackComponent = ({_error, info}) => (
@@ -102,7 +107,7 @@ const FallbackComponent = ({_error, info}) => (
 )
 
 ReactDOM.render(
-  <ErrorBoundary FallbackComponent={FallbackComponent}>
+  <ErrorBoundary FallbackComponent={FallbackComponent} beforeSend={beforeSend}>
     <BadButton />
   </ErrorBoundary>,
   document.getElementById('root')
