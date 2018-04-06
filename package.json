@@ -6,6 +6,7 @@
   "browser": "dist/bugsnag-react.js",
   "scripts": {
     "preversion": "./bin/env-check && npm run test",
+    "version": "npm run build && ./bin/update-changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags && npm publish --tag $(./bin/dist-tag-value)",
     "postpublish": "./bin/cdn-upload",
     "test": "standard && jest",
