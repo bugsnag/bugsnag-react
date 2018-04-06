@@ -10,6 +10,8 @@
 
 ## 1.1.0 (2018-04-06)
 
+⚠️ This release has been removed from the npm registry because the dist directory was not contained in the package. Please use v1.1.1 instead. ⚠️
+
 ### Added
 - `FallbackComponent` prop added to `<ErrorBoundary />`. This can be used to render a component after an error has been caught by the error boundary component. (#14)
 - `beforeSend` prop added to `<ErrorBoundary />`. This can be used to add data to, modify or prevent the sending of an error report. (#15)
