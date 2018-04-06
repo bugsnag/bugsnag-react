@@ -5,8 +5,6 @@ Thanks for stopping by. If you’re here because you’re considering contributi
 give us a shout ([@bengourley](https://github.com/bengourley) is the current lead
 maintainer, feel free to ping him on [Twitter](https://twitter.com/bengourley)).
 
-<!-- toc -->
-
 - [How to contribute](#how-to-contribute)
   * [Reporting issues](#reporting-issues)
   * [Fixing issues](#fixing-issues)
@@ -14,13 +12,10 @@ maintainer, feel free to ping him on [Twitter](https://twitter.com/bengourley)).
 - [System requirements](#system-requirements)
 - [QA](#qa)
   * [Testing](#testing)
-    + [Unit tests](#unit-tests)
   * [Linting](#linting)
 - [Releases](#releases)
   * [Prerelease](#prerelease)
   * [Release](#release)
-
-<!-- tocstop -->
 
 ## How to contribute
 
@@ -80,9 +75,7 @@ __tl;dr:__ _any changes must come with tests and must lint successfully._
 
 ### Testing
 
-#### Unit tests
-
-__Every file in `base` should be 100% covered by unit tests__. These tests can run in Node
+__Every file in `src` should be 100% covered by unit tests__. These tests can run in Node
 (not every browser). This means they are fast. They serve the purpose of validating
 that the logic is sound, and that individual components are implemented correctly,
 functioning as intended. They do not provide guarantees for any other environments.
@@ -90,7 +83,7 @@ functioning as intended. They do not provide guarantees for any other environmen
 __Command__
 
 ```
-npm run test:unit
+npm run test
 ```
 
 ### Linting
