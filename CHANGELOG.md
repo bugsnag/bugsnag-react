@@ -2,6 +2,12 @@
 
 <!-- {entry_placeholder} -->
 
+## 1.1.1 (2018-04-06)
+
+### Fixed
+- In the previous release (v1.1.0) the dist directory was missing from the npm package. This version ensures the built assets in dist do not get added to the repo, but do get added to the npm package.
+
+
 ## 1.1.0 (2018-04-06)
 
 ### Added
