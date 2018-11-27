@@ -1,3 +1,13 @@
+### Deprecation notice
+
+This package is now deprecated. All projects should upgrade to our universal JS notifier: [@bugsnag/js](https://github.com/bugsnag/bugsnag-js) and switch to the new version of this plugin:  [@bugsnag/plugin-react](https://github.com/bugsnag/bugsnag-js/blob/master/packages/plugin-react). See the [upgrade guide]( https://github.com/bugsnag/bugsnag-js/blob/master/UPGRADING.md) for more details.
+
+It will continue to exist on the npm registry and work with Bugsnag's API for the foreseeable future. However, it will no longer receive updates unless they are absolutely critical.
+
+Please upgrade at your earliest convenience.
+
+---
+
 # Bugsnag: React
 
 [![Documentation](https://img.shields.io/badge/docs-v1-green.svg)](https://docs.bugsnag.com/platforms/browsers/react/)
